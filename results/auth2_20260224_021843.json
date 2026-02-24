@@ -1,0 +1,27 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.491,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 2.486
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 0.288
+    },
+    {
+      "step": 3,
+      "action": "type",
+      "status": "error",
+      "error": "Page.fill: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"#email\")\n",
+      "time": 20.015
+    }
+  ],
+  "scenario": "auth2",
+  "timestamp": "2026-02-24T02:18:43.446488"
+}

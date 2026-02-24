@@ -1,0 +1,32 @@
+{
+  "name": "Authentication Test",
+  "url": "https://ckan-test.go-te.co",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "click",
+      "selector": "a.ua-btn.ua-btn--desktop"
+    },
+    {
+      "action": "type",
+      "selector": "#email",
+      "value": "invalid@example.com"
+    },
+    {
+      "action": "type",
+      "selector": "#password",
+      "value": "wrongpass"
+    },
+    {
+      "action": "click",
+      "selector": "button[type=submit]"
+    },
+    {
+      "action": "wait",
+      "selector": ".error-message"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.761,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 3.0
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "error",
+      "error": "Page.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"a.ua-btn.ua-btn--ondark\")\n    - locator resolved to <a href=\"/user/login\" class=\"ua-btn ua-btn--ondark\">Увійти</a>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    33 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+      "time": 20.007
+    }
+  ],
+  "scenario": "auth",
+  "timestamp": "2026-02-24T02:18:16.952612"
+}

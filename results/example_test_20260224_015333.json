@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "duration_seconds": 4.216,
+  "steps": [
+    {
+      "step": 1,
+      "action": "wait",
+      "status": "ok",
+      "time": 0.064
+    }
+  ],
+  "scenario": "example_test",
+  "timestamp": "2026-02-24T01:53:33.543774"
+}

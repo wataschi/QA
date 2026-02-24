@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "duration_seconds": 2.725,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 0.194
+    },
+    {
+      "step": 2,
+      "action": "type",
+      "status": "ok",
+      "time": 0.07
+    },
+    {
+      "step": 3,
+      "action": "type",
+      "status": "ok",
+      "time": 0.009
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "status": "ok",
+      "time": 0.14
+    }
+  ],
+  "scenario": "login_real",
+  "timestamp": "2026-02-24T02:06:37.185812"
+}

@@ -1,0 +1,7 @@
+lm_studio:
+  url: "http://localhost:1234/v1"
+  model: "deepseek-coder-v2-lite-instruct"
+
+browser:
+  headless: false
+  timeout: 20000

@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "duration_seconds": 0.897,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 0.01
+    },
+    {
+      "step": 2,
+      "action": "wait",
+      "status": "ok",
+      "time": 0.021
+    }
+  ],
+  "scenario": "homepage_check",
+  "timestamp": "2026-02-24T01:55:19.647036"
+}

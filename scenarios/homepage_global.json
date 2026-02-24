@@ -1,0 +1,18 @@
+{
+  "name": "Main page elements test",
+  "url": "https://ckan-test.go-te.co",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "wait",
+      "selector": "a.nav-link.active"
+    },
+    {
+      "action": "wait",
+      "selector": "#homepage-search-input"
+    }
+  ]
+}

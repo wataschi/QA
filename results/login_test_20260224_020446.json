@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "duration_seconds": 37.135,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 2.602
+    },
+    {
+      "step": 2,
+      "action": "wait",
+      "status": "error",
+      "error": "Page.wait_for_selector: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#username\") to be visible\n",
+      "time": 30.011
+    }
+  ],
+  "scenario": "login_test",
+  "timestamp": "2026-02-24T02:04:46.737449"
+}
