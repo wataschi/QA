@@ -1,0 +1,73 @@
+{
+  "status": "failed",
+  "duration_seconds": 7.497,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.079
+    },
+    {
+      "step": 2,
+      "action": "hover",
+      "status": "ok",
+      "time": 0.14
+    },
+    {
+      "step": 3,
+      "action": "click",
+      "status": "ok",
+      "time": 0.191
+    },
+    {
+      "step": 4,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/about' in 'https://ckan-test.go-te.co/about'"
+    },
+    {
+      "step": 5,
+      "action": "click",
+      "status": "ok",
+      "time": 0.921
+    },
+    {
+      "step": 6,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/' in 'https://ckan-test.go-te.co/'"
+    },
+    {
+      "step": 7,
+      "action": "click",
+      "status": "ok",
+      "time": 0.988
+    },
+    {
+      "step": 8,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/dashboard' in 'https://ckan-test.go-te.co/dashboard'"
+    },
+    {
+      "step": 9,
+      "action": "click",
+      "status": "ok",
+      "time": 0.159
+    },
+    {
+      "step": 10,
+      "action": "assert_url",
+      "status": "error",
+      "error": "Очікувано URL що містить 'https://maps.kyivcity.gov.ua/', поточний: 'https://ckan-test.go-te.co/dashboard'",
+      "screenshot": "screenshots\\nav_test_step10_20260224_025046.png",
+      "time": 0.146
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:50:46.918210"
+}

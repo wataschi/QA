@@ -1,3 +1,4 @@
+import io
 import json
 import sys
 from pathlib import Path
@@ -14,7 +15,7 @@ from .ai_client import AITestGenerator
 from .browser import PageAnalyzer
 from .test_runner import TestRunner
 
-console = Console()
+console = Console(force_terminal=True)
 
 
 def _load_config() -> dict:
@@ -53,11 +54,12 @@ def show_menu():
     table.add_column(style="bold yellow", width=4)
     table.add_column()
     table.add_row("1.", "Згенерувати тест через AI")
-    table.add_row("2.", "Запустити тест")
-    table.add_row("3.", "Запустити всі тести")
-    table.add_row("4.", "Переглянути сценарії")
-    table.add_row("5.", "Переглянути результати")
-    table.add_row("6.", "Переглянути деталі сценарію")
+    table.add_row("2.", "Згенерувати тести за ТЗ/специфікацією")
+    table.add_row("3.", "Запустити тест")
+    table.add_row("4.", "Запустити всі тести")
+    table.add_row("5.", "Переглянути сценарії")
+    table.add_row("6.", "Переглянути результати")
+    table.add_row("7.", "Переглянути деталі сценарію")
     table.add_row("0.", "Вихід")
     console.print()
     console.print(Panel(table, title="Меню", border_style="blue", box=box.ROUNDED))
@@ -72,21 +74,23 @@ def action_generate(cfg: dict):
 
     ai = _get_ai(cfg)
     page_structure = None
+    page_data = None
 
     if scan:
         with console.status("Сканування сторінки..."):
             try:
                 analyzer = PageAnalyzer(headless=True)
-                elements = analyzer.analyze(url)
-                page_structure = analyzer.format_for_ai(elements)
-                console.print(f"  Знайдено [green]{len(elements)}[/] інтерактивних елементів")
+                page_data = analyzer.analyze(url)
+                page_structure = analyzer.format_for_ai(page_data)
+                console.print(f"  Знайдено [green]{analyzer.element_count(page_data)}[/] інтерактивних елементів")
             except Exception as exc:
                 console.print(f"  [red]Не вдалося просканувати:[/] {exc}")
                 console.print("  Генерація без даних сторінки...")
 
     with console.status("Очікую відповідь від AI..."):
         try:
-            test_data = ai.generate_test(description, url, page_structure)
+            test_data = ai.generate_test(description, url, page_structure,
+                                               page_data=page_data if page_structure else None)
         except Exception as exc:
             console.print(f"[red]Помилка AI:[/] {exc}")
             return
@@ -95,6 +99,11 @@ def action_generate(cfg: dict):
         test_data["url"] = url
     if "name" not in test_data:
         test_data["name"] = name
+
+    steps = test_data.get("steps", [])
+    if steps and steps[0].get("action") != "goto":
+        steps.insert(0, {"action": "goto", "value": url})
+        test_data["steps"] = steps
 
     scenarios_dir = Path("scenarios")
     scenarios_dir.mkdir(exist_ok=True)
@@ -106,6 +115,89 @@ def action_generate(cfg: dict):
     console.print(f"Кроків: [cyan]{len(test_data.get('steps', []))}[/]")
 
     _print_steps_table(test_data.get("steps", []))
+
+
+def action_generate_from_spec(cfg: dict):
+    console.print("\n[bold cyan]--- Генерація тестів за ТЗ ---[/]")
+    url = Prompt.ask("[yellow]URL сайту[/]")
+    spec_path_str = Prompt.ask("[yellow]Шлях до файлу специфікації (txt/md)[/]")
+    spec_path = Path(spec_path_str)
+
+    if not spec_path.exists():
+        console.print(f"[red]Файл не знайдено:[/] {spec_path}")
+        return
+
+    spec_text = spec_path.read_text(encoding="utf-8")
+    console.print(f"  Специфікація: [green]{spec_path.name}[/] ({len(spec_text)} символів)")
+
+    scan = Confirm.ask("[yellow]Сканувати сторінку для точних селекторів?[/]", default=True)
+
+    ai = _get_ai(cfg)
+    page_structure = None
+    page_data = None
+
+    if scan:
+        with console.status("Сканування сторінки..."):
+            try:
+                analyzer = PageAnalyzer(headless=True)
+                page_data = analyzer.analyze(url)
+                page_structure = analyzer.format_for_ai(page_data)
+                console.print(f"  Знайдено [green]{analyzer.element_count(page_data)}[/] інтерактивних елементів")
+            except Exception as exc:
+                console.print(f"  [red]Не вдалося просканувати:[/] {exc}")
+
+    with console.status("Генерація тест-кейсів за специфікацією..."):
+        try:
+            scenarios = ai.generate_from_spec(
+                spec_text, url, page_structure,
+                page_data=page_data if page_structure else None,
+            )
+        except Exception as exc:
+            console.print(f"[red]Помилка AI:[/] {exc}")
+            return
+
+    if not scenarios:
+        console.print("[yellow]AI не згенерував жодного сценарію.[/]")
+        return
+
+    scenarios_dir = Path("scenarios")
+    scenarios_dir.mkdir(exist_ok=True)
+
+    console.print(f"\n[green]Згенеровано {len(scenarios)} тест-кейсів:[/]")
+
+    table = Table(box=box.ROUNDED, border_style="green")
+    table.add_column("#", style="dim", width=3)
+    table.add_column("Назва")
+    table.add_column("Пріоритет", justify="center")
+    table.add_column("Кроків", justify="center")
+    table.add_column("Опис")
+
+    for i, sc in enumerate(scenarios, 1):
+        name = sc.get("name", f"spec_test_{i}")
+        if not sc.get("url"):
+            sc["url"] = url
+        if not sc.get("name"):
+            sc["name"] = name
+
+        steps = sc.get("steps", [])
+        if steps and steps[0].get("action") != "goto":
+            steps.insert(0, {"action": "goto", "value": url})
+            sc["steps"] = steps
+
+        output_path = scenarios_dir / f"{name}.json"
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(sc, f, indent=2, ensure_ascii=False)
+
+        priority = sc.get("priority", "medium")
+        p_style = {"high": "red", "medium": "yellow", "low": "dim"}.get(priority, "")
+        table.add_row(
+            str(i), name,
+            f"[{p_style}]{priority}[/]",
+            str(len(sc.get("steps", []))),
+            sc.get("description", "")[:50],
+        )
+
+    console.print(table)
 
 
 def action_run(cfg: dict):
@@ -331,11 +423,12 @@ def _print_result(name: str, result: dict):
 
 ACTIONS = {
     "1": action_generate,
-    "2": action_run,
-    "3": action_run_all,
-    "4": action_list,
-    "5": action_results,
-    "6": action_details,
+    "2": action_generate_from_spec,
+    "3": action_run,
+    "4": action_run_all,
+    "5": action_list,
+    "6": action_results,
+    "7": action_details,
 }
 
 
@@ -346,7 +439,7 @@ def main():
     while True:
         show_menu()
         try:
-            choice = Prompt.ask("\n[bold]Оберіть дію[/]", choices=["0", "1", "2", "3", "4", "5", "6"], default="0")
+            choice = Prompt.ask("\n[bold]Оберіть дію[/]", choices=["0", "1", "2", "3", "4", "5", "6", "7"], default="0")
         except (KeyboardInterrupt, EOFError):
             break
 

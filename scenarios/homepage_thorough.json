@@ -1,0 +1,146 @@
+{
+  "name": "Homepage validation – title, headings, navigation and search",
+  "url": "https://ckan-test.go-te.co/",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co/"
+    },
+    {
+      "action": "assert_title",
+      "value": "Портал \"Відкриті дані\""
+    },
+    {
+      "action": "assert_visible",
+      "selector": "h1.general-block-title.aos-init"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h1.general-block-title.aos-init",
+      "value": "Портал даних Києва"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "h2.popular-block__header-title"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h2.popular-block__header-title",
+      "value": "Популярне"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "a.nav-link.active"
+    },
+    {
+      "action": "assert_text",
+      "selector": "a.nav-link.active",
+      "value": "Головна"
+    },
+    {
+      "action": "click",
+      "selector": "a.nav-link"
+    },
+    {
+      "action": "wait_url",
+      "value": "/dashboard"
+    },
+    {
+      "action": "assert_url",
+      "value": "/dashboard"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "h2.manager-block-title.aos-init"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h2.manager-block-title.aos-init",
+      "value": "Головний розпорядник даних – місто"
+    },
+    {
+      "action": "click",
+      "selector": "a.nav-link.active"
+    },
+    {
+      "action": "wait_url",
+      "value": "/"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "input#homepage-search-input"
+    },
+    {
+      "action": "type",
+      "selector": "input#homepage-search-input",
+      "value": "Витрати тепла в Дніп|"
+    },
+    {
+      "action": "press",
+      "value": "Enter"
+    },
+    {
+      "action": "wait_url",
+      "value": "/search/"
+    },
+    {
+      "action": "assert_url",
+      "value": "/search/"
+    },
+    {
+      "action": "click",
+      "selector": "button.logo-item"
+    },
+    {
+      "action": "wait_url",
+      "value": "/"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "a.logo-link"
+    },
+    {
+      "action": "click",
+      "selector": "a.logo-link"
+    },
+    {
+      "action": "wait_url",
+      "value": "/"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "img.logo-img"
+    },
+    {
+      "action": "assert_attribute",
+      "selector": "img.logo-img",
+      "attribute": "alt",
+      "value": "Портал даних Києва"
+    },
+    {
+      "action": "click",
+      "selector": "button.popular-block__tab-button.active"
+    },
+    {
+      "action": "wait_visible",
+      "selector": "h3.popular-block__item-title"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h3.popular-block__item-title",
+      "value": "Placeat aut natus v"
+    },
+    {
+      "action": "click",
+      "selector": "a.popular-block__item-link"
+    },
+    {
+      "action": "wait_url",
+      "value": "/dashboard/placeat-aut-natus-v"
+    },
+    {
+      "action": "assert_url",
+      "value": "/dashboard/placeat-aut-natus-v"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.57,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.073
+    },
+    {
+      "step": 2,
+      "action": "assert_title",
+      "status": "ok",
+      "time": 0.005,
+      "info": "title ok: 'Портал \"Відкриті дані\"'"
+    },
+    {
+      "step": 3,
+      "action": "assert_visible",
+      "status": "ok",
+      "time": 0.02,
+      "info": "visible: ok"
+    },
+    {
+      "step": 4,
+      "action": "assert_text",
+      "status": "ok",
+      "time": 0.003,
+      "info": "text ok: 'Портал даних Києва' found"
+    },
+    {
+      "step": 5,
+      "action": "assert_visible",
+      "status": "ok",
+      "time": 0.003,
+      "info": "visible: ok"
+    },
+    {
+      "step": 6,
+      "action": "assert_text",
+      "status": "ok",
+      "time": 0.002,
+      "info": "text ok: 'Популярне' found"
+    },
+    {
+      "step": 7,
+      "action": "assert_visible",
+      "status": "ok",
+      "time": 0.002,
+      "info": "visible: ok"
+    },
+    {
+      "step": 8,
+      "action": "assert_text",
+      "status": "ok",
+      "time": 0.002,
+      "info": "text ok: 'Головна' found"
+    },
+    {
+      "step": 9,
+      "action": "click",
+      "status": "ok",
+      "time": 1.066
+    },
+    {
+      "step": 10,
+      "action": "wait_url",
+      "status": "error",
+      "error": "Timeout 20000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"/dashboard\" until 'load'\n============================================================",
+      "screenshot": "screenshots\\Homepage validation – title, headings, navigation and search_step10_20260224_022721.png",
+      "time": 20.63
+    }
+  ],
+  "scenario": "homepage_thorough",
+  "timestamp": "2026-02-24T02:27:22.010080"
+}

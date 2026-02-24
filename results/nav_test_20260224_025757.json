@@ -1,0 +1,86 @@
+{
+  "status": "failed",
+  "duration_seconds": 9.816,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.102
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 0.892
+    },
+    {
+      "step": 3,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/' in 'https://ckan-test.go-te.co/'"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "status": "ok",
+      "time": 0.496
+    },
+    {
+      "step": 5,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/dashboard' in 'https://ckan-test.go-te.co/dashboard'"
+    },
+    {
+      "step": 6,
+      "action": "click",
+      "status": "ok",
+      "time": 1.049
+    },
+    {
+      "step": 7,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/dataset/' in 'https://ckan-test.go-te.co/dataset/'"
+    },
+    {
+      "step": 8,
+      "action": "click",
+      "status": "ok",
+      "time": 1.652
+    },
+    {
+      "step": 9,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/organization/' in 'https://ckan-test.go-te.co/organization/'"
+    },
+    {
+      "step": 10,
+      "action": "hover",
+      "status": "ok",
+      "time": 0.162
+    },
+    {
+      "step": 11,
+      "action": "click",
+      "status": "ok",
+      "time": 0.113
+    },
+    {
+      "step": 12,
+      "action": "assert_url",
+      "status": "error",
+      "error": "Очікувано URL що містить '/about', поточний: 'https://ckan-test.go-te.co/organization/'",
+      "screenshot": null,
+      "time": 0.026
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:57:57.405000"
+}

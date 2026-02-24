@@ -1,0 +1,48 @@
+{
+  "status": "failed",
+  "duration_seconds": 27.544,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.029
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 1.256
+    },
+    {
+      "step": 3,
+      "action": "wait_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url already matches: '/'"
+    },
+    {
+      "step": 4,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/' in 'https://ckan-test.go-te.co/'"
+    },
+    {
+      "step": 5,
+      "action": "click",
+      "status": "ok",
+      "time": 1.038
+    },
+    {
+      "step": 6,
+      "action": "wait_url",
+      "status": "error",
+      "error": "Timeout 20000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/dashboard*\" until 'load'\n============================================================",
+      "screenshot": "screenshots\\Navigation menu test_step6_20260224_023510.png",
+      "time": 20.458
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:35:10.943960"
+}

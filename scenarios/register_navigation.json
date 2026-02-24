@@ -1,0 +1,16 @@
+{
+  "name": "register_navigation",
+  "description": "Verify that the 'Зареєструватися' link navigates to the registration page.",
+  "priority": "low",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "click",
+      "selector": "a:contains('Зареєструватися')"
+    }
+  ],
+  "url": "https://ckan-test.go-te.co"
+}

@@ -1,0 +1,26 @@
+{
+  "name": "login_empty_fields",
+  "description": "Verify that validation messages appear when submitting the login form without entering any data.",
+  "priority": "medium",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "click",
+      "selector": "button[type=\"submit\"]"
+    },
+    {
+      "action": "assert_text",
+      "selector": "input[name=\"login\"] + .validation-error",
+      "value": "This field is required."
+    },
+    {
+      "action": "assert_text",
+      "selector": "input[type=\"password\"] + .validation-error",
+      "value": "This field is required."
+    }
+  ],
+  "url": "https://ckan-test.go-te.co"
+}

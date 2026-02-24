@@ -1,0 +1,31 @@
+{
+  "name": "login_success",
+  "description": "Verify that a registered user can successfully log in and is redirected to the dashboard.",
+  "priority": "high",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "type",
+      "selector": "input[name=\"login\"]",
+      "value": "validuser"
+    },
+    {
+      "action": "type",
+      "selector": "input[type=\"password\"]",
+      "value": "validpass123"
+    },
+    {
+      "action": "click",
+      "selector": "button[type=\"submit\"]"
+    },
+    {
+      "action": "assert_text",
+      "selector": "header .user-name",
+      "value": "validuser"
+    }
+  ],
+  "url": "https://ckan-test.go-te.co"
+}

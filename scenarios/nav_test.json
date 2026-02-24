@@ -1,0 +1,145 @@
+{
+  "steps": [
+    {
+      "action": "goto",
+      "selector": "",
+      "value": "https://ckan-test.go-te.co/"
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Головна\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/"
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Дашборди\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/dashboard"
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Набори даних\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/dataset/"
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Розпорядники\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/organization/"
+    },
+    {
+      "action": "hover",
+      "selector": "a:has-text(\"Інше\")",
+      "value": ""
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Про портал\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/about"
+    },
+    {
+      "action": "hover",
+      "selector": "a:has-text(\"Інше\")",
+      "value": ""
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Новини\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/news"
+    },
+    {
+      "action": "hover",
+      "selector": "a:has-text(\"Інше\")",
+      "value": ""
+    },
+    {
+      "action": "click",
+      "selector": "a:has-text(\"Пропозиції\")",
+      "value": ""
+    },
+    {
+      "action": "assert_url",
+      "selector": "",
+      "value": "/proposals"
+    }
+  ],
+  "elements": [
+    {
+      "action": "assert_text",
+      "selector": "h1.general-block-title.aos-init",
+      "value": "Портал даних Києва"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h2.popular-block__header-title",
+      "value": "Популярне"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h3.popular-block__item-title",
+      "value": "Placeat aut natus v"
+    },
+    {
+      "action": "assert_text",
+      "selector": "h3.popular-block__item-title",
+      "value": "Новий"
+    }
+  ],
+  "buttons": [
+    {
+      "action": "click",
+      "selector": "button.button.logo-item",
+      "value": ""
+    },
+    {
+      "action": "assert_visible",
+      "selector": "button.popular-block__tab-button.active",
+      "value": "Дашборди"
+    },
+    {
+      "action": "assert_visible",
+      "selector": "button.popular-block__tab-button",
+      "value": "Набори даних"
+    },
+    {
+      "action": "click",
+      "selector": "button.call-block-item-button",
+      "value": ""
+    },
+    {
+      "action": "type",
+      "selector": "#homepage-search-input",
+      "value": "Витрати тепла в Дніп"
+    }
+  ],
+  "url": "https://ckan-test.go-te.co",
+  "name": "nav_test"
+}

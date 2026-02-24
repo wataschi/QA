@@ -1,6 +1,6 @@
 lm_studio:
   url: "http://localhost:1234/v1"
-  model: "deepseek-coder-v2-lite-instruct"
+  model: "openai/gpt-oss-20b"
 
 browser:
   headless: false

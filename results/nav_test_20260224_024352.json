@@ -1,0 +1,48 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.328,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.043
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 1.349
+    },
+    {
+      "step": 3,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/' in 'https://ckan-test.go-te.co/'"
+    },
+    {
+      "step": 4,
+      "action": "click",
+      "status": "ok",
+      "time": 0.576
+    },
+    {
+      "step": 5,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/dashboard' in 'https://ckan-test.go-te.co/dashboard'"
+    },
+    {
+      "step": 6,
+      "action": "hover",
+      "status": "error",
+      "error": "Page.hover: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"a:has-text(\\\"Про портал\\\")\")\n    - locator resolved to 2 elements. Proceeding with the first one: <a id=\"\" href=\"/about\" class=\"dropdown-item \">↵                ↵↵                Про портал↵   …</a>\n  - attempting hover action\n    2 × waiting for element to be visible and stable\n      - element is not visible\n    - retrying hover action\n    - waiting 20ms\n    2 × waiting for element to be visible and stable\n      - element is not visible\n    - retrying hover action\n      - waiting 100ms\n    38 × waiting for element to be visible and stable\n       - element is not visible\n     - retrying hover action\n       - waiting 500ms\n",
+      "screenshot": "screenshots\\nav_test_step6_20260224_024352.png",
+      "time": 20.096
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:43:52.534456"
+}

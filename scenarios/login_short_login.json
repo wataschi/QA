@@ -1,0 +1,26 @@
+{
+  "name": "login_short_login",
+  "description": "Verify that a login shorter than 3 characters triggers a validation error.",
+  "priority": "medium",
+  "steps": [
+    {
+      "action": "goto",
+      "value": "https://ckan-test.go-te.co"
+    },
+    {
+      "action": "type",
+      "selector": "input[name=\"login\"]",
+      "value": "ab"
+    },
+    {
+      "action": "click",
+      "selector": "button[type=\"submit\"]"
+    },
+    {
+      "action": "assert_text",
+      "selector": "input[name=\"login\"] + .validation-error",
+      "value": "Login must be at least 3 characters"
+    }
+  ],
+  "url": "https://ckan-test.go-te.co"
+}

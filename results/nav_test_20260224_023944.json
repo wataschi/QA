@@ -1,0 +1,62 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.008,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.027
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 0.886
+    },
+    {
+      "step": 3,
+      "action": "wait_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url already matches: '/'"
+    },
+    {
+      "step": 4,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/' in 'https://ckan-test.go-te.co/'"
+    },
+    {
+      "step": 5,
+      "action": "click",
+      "status": "ok",
+      "time": 0.674
+    },
+    {
+      "step": 6,
+      "action": "wait_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url already matches: '/dashboard'"
+    },
+    {
+      "step": 7,
+      "action": "assert_url",
+      "status": "ok",
+      "time": 0.0,
+      "info": "url ok: '/dashboard' in 'https://ckan-test.go-te.co/dashboard'"
+    },
+    {
+      "step": 8,
+      "action": "click",
+      "status": "error",
+      "error": "Page.click: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator(\"a:has-text(\\\"Про портал\\\")\")\n    - locator resolved to 2 elements. Proceeding with the first one: <a id=\"\" href=\"/about\" class=\"dropdown-item \">↵                ↵↵                Про портал↵   …</a>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    38 × waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+      "screenshot": "screenshots\\Nav test_step8_20260224_023944.png",
+      "time": 20.114
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:39:44.728840"
+}

@@ -1,0 +1,28 @@
+{
+  "status": "failed",
+  "duration_seconds": 26.538,
+  "steps": [
+    {
+      "step": 1,
+      "action": "goto",
+      "status": "ok",
+      "time": 1.073
+    },
+    {
+      "step": 2,
+      "action": "click",
+      "status": "ok",
+      "time": 1.53
+    },
+    {
+      "step": 3,
+      "action": "wait_url",
+      "status": "error",
+      "error": "Timeout 20000ms exceeded.\n=========================== logs ===========================\nwaiting for navigation to \"**/$*\" until 'load'\n============================================================",
+      "screenshot": "screenshots\\Navigation menu test_step3_20260224_023414.png",
+      "time": 20.648
+    }
+  ],
+  "scenario": "nav_test",
+  "timestamp": "2026-02-24T02:34:14.709415"
+}
